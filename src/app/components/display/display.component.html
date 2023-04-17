@@ -1,0 +1,49 @@
+<div>
+  <button style="margin-top: 10px;" (click)="getAllStudents()">Display all students</button>
+
+  <table mat-table [dataSource]="allStudent$ | async" *ngIf="display">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    </ng-container>
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+
+
+</div><br>
+
+<div>
+  <form>
+    <mat-form-field>
+      <input type="text" #name id="name" size="30" style="height: 25px;" placeholder="Name" matInput
+        [matAutocomplete]="auto" /><br><br>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let student of allStudentDisplay$ | async" [value]="student.name">
+          {{student.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <button (click)="getOneStudent(name.value)">Search</button><br><br>
+
+  <!-- need to refine with better implementation instead of ngFor -->
+
+
+  <div *ngFor="let stud of student$ | async">
+    {{stud.name}}
+    {{stud.age}}
+    {{stud.address}}
+  </div>
+
+
+</div>

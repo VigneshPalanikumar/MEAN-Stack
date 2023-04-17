@@ -1,0 +1,16 @@
+<div style="text-align: center;">
+  <h1>Welcome to UoA</h1><br>
+  <p>Enter student's details to add to database</p><br>
+  <div>
+    <input type="text" #name id="name" size="30" style="height: 25px;" placeholder="Name"/><br><br>
+    <input type="text" #age size="30" style="height: 25px;" placeholder="Age"/><br><br>
+    <input type="text" #address size="30" style="height: 25px;" placeholder="Address"/><br>
+    <a routerLink="/thanks"><button style="margin-top: 10px;" (click)="createStudent(name.value, age.value, address.value)">Save</button></a>
+    <a routerLink="/thanks"><button style="margin-top: 10px; margin-left: 10px;" (click)="updateStudent(name.value, age.value, address.value)">Update</button></a>
+    <button style="margin-top: 10px; margin-left: 10px;" (click)="deleteStudent(name.value)">Delete</button>
+  </div>
+
+  <div style="margin-top: 25px;">
+    <a routerLink="/display"><button>Display page</button></a>
+  </div>
+</div>
